@@ -3,7 +3,7 @@
     --bg: #0a0a0a;
     --fg: #f5f5f5;
     --accent: #c5a367;
-    --muted: rgba(245, 245, 245, 0.4);
+    --muted: rgba(245, 245, 245, 0.45);
     --border: rgba(255, 255, 255, 0.08);
 
     /* Animation Easing */
@@ -78,7 +78,7 @@ body {
     font-family: var(--font-serif);
     font-size: 40vw;
     font-weight: 700;
-    color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.05);
     white-space: nowrap;
     letter-spacing: -0.05em;
     user-select: none;
@@ -121,10 +121,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-}
-
-.logo {
-    display: none;
 }
 
 .meta {
@@ -195,7 +191,7 @@ body {
     display: block;
     font-size: 0.8rem;
     letter-spacing: 0.4em;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     color: rgba(255, 255, 255, 0.45);
     text-transform: uppercase;
 }
@@ -203,16 +199,16 @@ body {
 .hero__title {
     font-family: var(--font-serif);
     font-weight: 300;
-    font-size: clamp(4rem, 12vw, 13rem);
+    font-size: clamp(3.5rem, 10vw, 11rem);
     line-height: 1.1;
     letter-spacing: -0.05em;
     margin-bottom: 4rem;
 }
 
 .hero__title-line {
-    overflow: hidden; /* Restored overflow hidden for reveal effect */
-    padding-bottom: 0.25em; /* Added padding to contain descenders */
-    margin-bottom: -0.25em; /* Compensate for padding */
+    overflow: hidden;
+    padding-bottom: 0.35em;
+    margin-bottom: -0.35em;
 }
 
 .hero__title-line span, .hero__title-line i {
@@ -228,7 +224,6 @@ body {
     font-weight: 200;
     -webkit-text-stroke: 0;
 
-    /* Metallic Gold Shining Color */
     background: linear-gradient(
         to right,
         #46371c 0%,
@@ -246,9 +241,8 @@ body {
     background-clip: text;
     color: transparent;
 
-    /* Crucial fix for cut descenders with background-clip: text */
-    padding-bottom: 0.2em;
-    margin-bottom: -0.2em;
+    padding-bottom: 0.3em;
+    margin-bottom: -0.3em;
 
     animation: reveal-line 1.8s var(--ease-slow) 1s forwards, metallic-shine 3s linear infinite;
 }
@@ -273,7 +267,7 @@ body {
 @keyframes fade-in { to { opacity: 1; } }
 
 .hero__description {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     line-height: 1.8;
     color: var(--muted);
     font-weight: 300;
@@ -361,17 +355,93 @@ body {
 }
 
 /* --- Mobile Responsiveness --- */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
     :root {
         --frame-margin: 1.5rem;
-        --gutter: 2rem;
+        --gutter: 1.5rem;
     }
 
-    .hero__title { font-size: 16vw; }
-    .hero__title-line--alt { padding-left: 0; }
-    .hero__content { grid-template-columns: 1fr; gap: 4rem; }
-    .marquee { display: none; }
-    .footer { flex-direction: column; align-items: center; gap: 3rem; text-align: center; }
-    #cursor { display: none; }
-    body { cursor: auto; }
+    body {
+        overflow-y: auto;
+        height: auto;
+        cursor: auto;
+    }
+
+    .interface__line {
+        display: none;
+    }
+
+    .meta {
+        position: absolute;
+        top: 2rem;
+        right: 1.5rem;
+    }
+
+    .main {
+        height: auto;
+        padding-top: 8rem;
+        padding-bottom: 6rem;
+    }
+
+    .header, .footer, .main {
+        padding-left: var(--gutter);
+        padding-right: var(--gutter);
+    }
+
+    .hero__brand {
+        font-size: 0.7rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero__title {
+        font-size: 15vw;
+        margin-bottom: 3rem;
+        line-height: 1.2;
+    }
+
+    .hero__title-line--alt {
+        padding-left: 0;
+        margin-top: 0.5rem;
+    }
+
+    .hero__content {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+    }
+
+    .hero__description {
+        font-size: 1.05rem;
+    }
+
+    .hero__accent {
+        margin-bottom: 1.5rem;
+    }
+
+    .marquee {
+        display: none;
+    }
+
+    .footer {
+        position: relative;
+        bottom: 0;
+        padding-bottom: 4rem;
+        justify-content: center;
+    }
+
+    #cursor {
+        display: none;
+    }
+
+    .backdrop__glitch {
+        font-size: 80vw;
+        bottom: -10vh;
+        right: -20vw;
+        opacity: 0.04;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero__title {
+        font-size: 18vw;
+    }
 }
